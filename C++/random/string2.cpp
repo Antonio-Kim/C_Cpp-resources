@@ -4,9 +4,8 @@ using std::string;
 
 int main()
 {
-    string author = "John Hancock";
+    string author = "Samuel Clemens";
     string& penName = author;
-    std::cout << penName << std::endl;
     penName = "Mark Twain";
     std::cout << author << std::endl;
 
