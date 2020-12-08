@@ -5,36 +5,25 @@ class Vect {
     int* data;
     int size;
 public:
-    Vect(int n);
-    ~Vect();
-    void setdata(int n, int index);
-    int getdata(int index);
-    void displayVector();
+    Vect(int n):size(n),data(new int[n]) {
+        cout<<"Constructing array with size of " << n << endl;
+    }
+    ~Vect() {
+        cout << "destrucing the array " << endl;
+        delete []data;
+    }
+    void setdata(int n, int index) {
+        data[index] = n;
+    }
+    int getdata(int index) {
+        return data[index];
+    }
+    void displayVector() {
+        for (int i = 0; i < size; i++)
+            cout << getdata(i) << " ";
+        cout << endl;
+    }
 };
-
-Vect::Vect(int n) {
-    size = n;
-    data = new int[n];
-}
-
-Vect::~Vect() {
-    delete [] data;
-    cout << "deleting vectors" << endl;
-}
-
-void Vect::setdata(int n, int index){
-    data[index] = n;
-}
-
-void Vect::displayVector() {
-    for (int i = 0; i < size; i++)
-        cout << getdata(i) << " ";
-    cout << endl;
-}
-
-int Vect::getdata(int index){
-    return data[index];
-}
 
 int main(void) {
     Vect a(5);
