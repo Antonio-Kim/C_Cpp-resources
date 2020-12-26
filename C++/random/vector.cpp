@@ -1,26 +1,23 @@
 #include <iostream>
+#include <memory>
 using namespace std;
 
 class Vect {
-    int* data;
+    unique_ptr<int[]> data;
     int size;
 public:
-    Vect(int n):size(n),data(new int[n]) {
-        cout<<"Constructing array with size of " << n << endl;
+    Vect(int n): size(n), data{new int[n]}{
+        cout << "Constructing array with size of " << n << endl;
     }
-    ~Vect() {
-        cout << "destrucing the array " << endl;
-        delete []data;
-    }
-    void setdata(int n, int index) {
+    void set_data(int n, int index){
         data[index] = n;
     }
-    int getdata(int index) {
+    int get_data(int index){
         return data[index];
     }
-    void displayVector() {
+    void display_vector(){
         for (int i = 0; i < size; i++)
-            cout << getdata(i) << " ";
+            cout << get_data(i) << " ";
         cout << endl;
     }
 };
@@ -28,8 +25,8 @@ public:
 int main(void) {
     Vect a(5);
     for (int i = 0; i < 5; i++)
-        a.setdata(i,i);
-    a.displayVector();
+        a.set_data(i,i);
+    a.display_vector();
 
     return 0;
 }
